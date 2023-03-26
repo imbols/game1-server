@@ -3,18 +3,22 @@ package com.example.game.login.dao;
 import com.example.game.login.entity.User;
 import org.springframework.stereotype.Repository;
 
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.Optional;
 
 @Repository
 public class UserDao {
-    private final Map<String, User> userMap = new ConcurrentHashMap<>();
+    private final UserRepository userRepository;
+
+    public UserDao(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     public User get(String username) {
-        return this.userMap.get(username);
+        Optional<User> optional = this.userRepository.findById(username);
+        return optional.orElse(null);
     }
 
     public User save(User user) {
-        return this.userMap.put(user.getUsername(), user);
+        return this.userRepository.save(user);
     }
 }
