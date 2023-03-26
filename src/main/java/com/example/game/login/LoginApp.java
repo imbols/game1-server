@@ -11,4 +11,12 @@ public interface LoginApp {
      * @return
      */
     Result<User> login(String username, String password);
+
+    /**
+     * 用户注册
+     * @param username
+     * @param password
+     * @return
+     */
+    Result<User> register(String username, String password);
 }
