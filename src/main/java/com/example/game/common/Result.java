@@ -8,8 +8,8 @@ public class Result<T> {
     private String msg;
     private T data;
 
-    public static Result<Void> of(FeedbackEnum feedbackEnum) {
-        Result<Void> result = new Result<>();
+    public static <T> Result<T> of(FeedbackEnum feedbackEnum) {
+        Result<T> result = new Result<>();
         result.setFeedback(feedbackEnum.getFeedback());
         result.setMsg(feedbackEnum.getMsg());
         return result;
