@@ -1,4 +1,4 @@
-package com.example.game.login.entity;
+package com.example.game.app.role.entity;
 
 import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
@@ -10,15 +10,12 @@ import java.util.Date;
 @Data
 @Entity
 @EntityListeners(AuditingEntityListener.class)
-@Table(indexes = {
-        @Index(columnList = "roleId", unique = true)
-})
-public class User {
+public class Role {
     @Id
-    private String username;
-    private String password;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer roleId;
-    private String token;
+    private String roleName;
+    private Integer level;
 
     @CreatedDate
     @Column(columnDefinition = "timestamp NULL DEFAULT NOW()")
